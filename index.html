@@ -1,1 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thulir Creations | We Create, You Celebrate!</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      background: linear-gradient(180deg, #fafdfa, #edf9f3, #fefefe);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    /* Smooth fade and parallax-like movement */
+    [data-animate] { opacity: 0; transform: translateY(25px); transition: all 0.8s ease; }
+    [data-animate].show { opacity: 1; transform: translateY(0); }
 
+    .navbar-blur {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .theme-color { color: #0d4e2c; }
+    .theme-bg { background-color: #0d4e2c; }
+
+    .glass-card {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border-radius: 1.25rem;
+      transition: all 0.4s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      background: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+
+    .hero-bg {
+      background: radial-gradient(circle at bottom right, #e8fff1, #ffffff);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: "";
+      position: absolute;
+      background: url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
+      opacity: 0.3;
+      inset: 0;
+      animation: moveBG 18s linear infinite;
+    }
+    @keyframes moveBG { 0% { background-position: 0 0; } 100% { background-position: 1000px 1000px; } }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #0d4e2c, #00b67a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background-color: #0d4e2c;
+      width: 0%;
+      z-index: 50;
+      transition: width 0.25s ease;
+    }
+
+    /* Floating button */
+    .float-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg,#0d4e2c,#00b67a);
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      text-align: center;
+      font-size: 26px;
+      z-index: 40;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+      50% { transform: scale(1.08); box-shadow: 0 0 30px rgba(13,78,44,0.4); }
+    }
+
+    /* Parallax sections */
+    .parallax {
+      background-attachment: fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    /* Animations for icons, sections, hover effects */
+    .icon-animate { transition: transform 0.4s; }
+    .icon-animate:hover { transform: rotate(12deg) scale(1.1); color: #0d4e2c; }
+
+    /* More visual variety cards */
+    .shadow-pop {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    .shadow-pop:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    /* Decorative border */
+    .border-gradient {
+      border-image: linear-gradient(45deg, #0d4e2c, #00b67a) 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-indicator" id="scrollBar"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar-blur fixed top-0 left-0 w-full z-30 py-4 px-6 flex justify-between items-center text-gray-800 shadow-md">
+    <h1 class="text-2xl font-bold gradient-text">Thulir Creations</h1>
+    <button id="menu-btn" class="text-2xl lg:hidden"><i class="fa fa-bars"></i></button>
+    <ul id="menu" class="hidden lg:flex space-x-10 font-medium">
+      <li><a href="#hero" class="hover:text-green-700">Home</a></li>
+      <li><a href="#about" class="hover:text-green-700">About</a></li>
+      <li><a href="#events" class="hover:text-green-700">Events</a></li>
+      <li><a href="#products" class="hover:text-green-700">Products</a></li>
+      <li><a href="#contact" class="hover:text-green-700">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden mt-16 bg-green-50 text-center py-4 shadow-md lg:hidden">
+    <a href="#hero" class="block py-2 text-gray-700">Home</a>
+    <a href="#about" class="block py-2 text-gray-700">About</a>
+    <a href="#events" class="block py-2 text-gray-700">Events</a>
+    <a href="#products" class="block py-2 text-gray-700">Products</a>
+    <a href="#contact" class="block py-2 text-gray-700">Contact</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-bg text-center pt-28 pb-20" data-animate>
+    <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">We Create, You Celebrate!</h2>
+    <p class="text-gray-600 text-lg max-w-xl mx-auto">Elegant events, timeless memories — crafted with passion, in Madurai and beyond.</p>
+    <div class="mt-8">
+      <a href="https://wa.me/9543476310" class="bg-green-700 text-white px-6 py-3 rounded-full hover:bg-green-800 transition shadow-pop">Create an Event</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 text-center bg-white" data-animate>
+    <h2 class="text-3xl font-semibold mb-4 theme-color">About Thulir Creations</h2>
+    <p class="max-w-3xl mx-auto text-gray-700 mb-6">
+      Thulir Creations is Madurai’s leading creative event company blending tradition and luxury to design dream celebrations. 
+      Our services range from event styling and décor to gift planning, photoshoots, and product design. 
+      Every celebration reflects care, individuality, and elegance.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto px-6">
+      <div class="glass-card p-6">
+        <i class="fa fa-heart text-4xl theme-color mb-3"></i>
+        <h3 class="font-bold text-lg">Creative Planning</h3>
+      </div>
+      <div class="glass-card p-6">
+        <i class="fa fa-lightbulb text-4xl theme-color mb-3"></i>
+        <h3 class="font-bold text-lg">Innovative Designs</h3>
+      </div>
+      <div class="glass-card p-6">
+        <i class="fa fa-handshake text-4xl theme-color mb-3"></i>
+        <h3 class="font-bold text-lg">Personal Touch</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Banner -->
+  <div class="parallax bg-fixed" style="background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf');">
+    Elegant • Creative • Unique
+  </div>
+
+  <!-- Events Section -->
+  <section id="events" class="py-20 px-6 text-center bg-gradient-to-b from-white to-green-50" data-animate>
+    <h2 class="text-3xl font-semibold mb-6 theme-color">We Create</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div class="glass-card p-4"><i class="fa fa-baby-carriage text-3xl theme-color icon-animate mb-3"></i><h3 class="font-bold">Baby Shower</h3></div>
+      <div class="glass-card p-4"><i class="fa fa-gift text-3xl theme-color icon-animate mb-3"></i><h3 class="font-bold">Return Gift</h3></div>
+      <div class="glass-card p-4"><i class="fa fa-birthday-cake text-3xl theme-color icon-animate mb-3"></i><h3 class="font-bold">Birthday Party</h3></div>
+      <div class="glass-card p-4"><i class="fa fa-heart text-3xl theme-color icon-animate mb-3"></i><h3 class="font-bold">Marriage</h3></div>
+      <div class="glass-card p-4"><i class="fa fa-briefcase text-3xl theme-color icon-animate mb-3"></i><h3 class="font-bold">Corporate Event</h3></div>
+      <div class="glass-card p-4"><i class="bx bx-magic text-3xl theme-color icon-animate mb-3"></i><h3 class="font-bold">Saree Prepleting</h3></div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-20 text-center bg-white" data-animate>
+    <h2 class="text-3xl font-semibold mb-8 theme-color">We Sell</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+      <div class="glass-card p-4 border border-gradient"><img src="/saree.png" alt="Sarees" class="mx-auto"><h3 class="font-bold mt-3">Sarees</h3></div>
+      <div class="glass-card p-4 border border-gradient"><img src="/IMG-20251026-WA0000.jpg" alt="Kurtis" class="mx-auto"><h3 class="font-bold mt-3">Kurtis</h3></div>
+      <div class="glass-card p-4 border border-gradient"><img src="/leggings.png" alt="Leggings" class="mx-auto"><h3 class="font-bold mt-3">Leggings</h3></div>
+      <div class="glass-card p-4 border border-gradient"><img src="/IMG-20251026-WA0001.jpg" alt="Sets" class="mx-auto"><h3 class="font-bold mt-3">Churidar Sets</h3></div>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="py-20 px-4 bg-green-50 text-center" data-animate>
+    <h2 class="text-3xl font-semibold theme-color mb-4">Follow Us on Instagram</h2>
+    <p class="text-gray-600 mb-8">Catch our live stories, new saree arrivals, décor inspirations & event highlights!</p>
+    <div class="max-w-6xl mx-auto">
+      <div class="elfsight-app-656ec01d-ccff-4af2-8fb2-ff876fca5165" data-elfsight-app-lazy></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 text-center bg-gradient-to-t from-green-100 to-white" data-animate>
+    <h2 class="text-3xl font-semibold mb-6 theme-color">Contact Us</h2>
+    <p class="text-gray-700"><i class="fa fa-phone-alt theme-color mr-2"></i><strong>9543476310</strong></p>
+    <p class="text-gray-700 mt-2 max-w-2xl mx-auto"><i class="fa fa-map-marker-alt theme-color mr-2"></i>
+      Meenambigai Nagar 5th Street, Near Ramana Shree Garden, Vasantha Villa Apartment, B4 block, Madurai 625 011, TN
+    </p>
+    <a href="https://wa.me/919543476310" class="inline-block mt-6 bg-green-700 text-white px-8 py-3 rounded-full hover:bg-green-800 transition">Chat on WhatsApp</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="theme-bg text-white py-10 text-center">
+    <p class="text-lg font-semibold">We Create, You Celebrate!</p>
+    <p class="mt-2 text-sm">© 2025 Thulir Creations | Designed by Mourish Developers</p>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/919543476310" class="float-btn flex items-center justify-center">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Scroll progress bar
+    const scrollBar = document.getElementById("scrollBar");
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrolled = (scrollTop / docHeight) * 100;
+      scrollBar.style.width = scrolled + "%";
+    });
+
+    // Hamburger toggle
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    menuBtn.addEventListener("click", () => { menu.classList.toggle("hidden"); });
+
+    // On-scroll animation trigger
+    const elements = document.querySelectorAll("[data-animate]");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add("show");
+      });
+    }, { threshold: 0.2 });
+    elements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+    </html>
