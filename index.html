@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thulir Creations | We Create, You Celebrate!</title>
+  <meta name="description" content="Thulir Creations - Madurai's leading event planning company for baby showers, birthdays, weddings & more. We Create, You Celebrate!">
+  <meta name="keywords" content="event planning Madurai, baby shower decoration, wedding planning, sarees Madurai, return gifts">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
@@ -127,6 +131,12 @@
     .border-gradient {
       border-image: linear-gradient(45deg, #0d4e2c, #00b67a) 1;
     }
+
+    /* Focus styles for accessibility */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus {
+      outline: 2px solid #0d4e2c;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
@@ -136,7 +146,7 @@
   <!-- Navbar -->
   <nav class="navbar-blur fixed top-0 left-0 w-full z-30 py-4 px-6 flex justify-between items-center text-gray-800 shadow-md">
     <h1 class="text-2xl font-bold gradient-text">Thulir Creations</h1>
-    <button id="menu-btn" class="text-2xl lg:hidden"><i class="fa fa-bars"></i></button>
+    <button id="menu-btn" class="text-2xl lg:hidden" aria-label="Toggle menu"><i class="fa fa-bars"></i></button>
     <ul id="menu" class="hidden lg:flex space-x-10 font-medium">
       <li><a href="#hero" class="hover:text-green-700">Home</a></li>
       <li><a href="#about" class="hover:text-green-700">About</a></li>
@@ -160,15 +170,15 @@
     <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">We Create, You Celebrate!</h2>
     <p class="text-gray-600 text-lg max-w-xl mx-auto">Elegant events, timeless memories — crafted with passion, in Madurai and beyond.</p>
     <div class="mt-8">
-      <a href="https://wa.me/9543476310" class="bg-green-700 text-white px-6 py-3 rounded-full hover:bg-green-800 transition shadow-pop">Create an Event</a>
+      <a href="#contact" class="bg-green-700 text-white px-6 py-3 rounded-full hover:bg-green-800 transition shadow-pop">Create an Event</a>
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about" class="py-20 text-center bg-white" data-animate>
     <h2 class="text-3xl font-semibold mb-4 theme-color">About Thulir Creations</h2>
-    <p class="max-w-3xl mx-auto text-gray-700 mb-6">
-      Thulir Creations is Madurai’s leading creative event company blending tradition and luxury to design dream celebrations. 
+    <p class="max-w-3xl mx-auto text-gray-700 mb-6 px-6">
+      Thulir Creations is Madurai's leading creative event company blending tradition and luxury to design dream celebrations. 
       Our services range from event styling and décor to gift planning, photoshoots, and product design. 
       Every celebration reflects care, individuality, and elegance.
     </p>
@@ -210,10 +220,56 @@
   <section id="products" class="py-20 text-center bg-white" data-animate>
     <h2 class="text-3xl font-semibold mb-8 theme-color">We Sell</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
-      <div class="glass-card p-4 border border-gradient"><img src="saree.png" alt="Sarees" class="mx-auto"><h3 class="font-bold mt-3">Sarees</h3></div>
-      <div class="glass-card p-4 border border-gradient"><img src="IMG-20251026-WA0000.jpg" alt="Kurtis" class="mx-auto"><h3 class="font-bold mt-3">Kurtis</h3></div>
-      <div class="glass-card p-4 border border-gradient"><img src="leggings.png" alt="Leggings" class="mx-auto"><h3 class="font-bold mt-3">Leggings</h3></div>
-      <div class="glass-card p-4 border border-gradient"><img src="IMG-20251026-WA0001.jpg" alt="Sets" class="mx-auto"><h3 class="font-bold mt-3">Churidar Sets</h3></div>
+      <div class="glass-card p-4 border border-gradient">
+        <div class="w-full h-48 bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg mb-3 flex items-center justify-center">
+          <img src="/saree.png" alt="saree">
+        </div>
+        <h3 class="font-bold mt-3">Sarees</h3>
+        <p class="text-sm text-gray-600 mt-2">Elegant traditional & designer sarees</p>
+      </div>
+      <div class="glass-card p-4 border border-gradient">
+        <div class="w-full h-48 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg mb-3 flex items-center justify-center">
+          <img src="/360_F_1553355430_LrkWoS1vxtflvKsPIlcF9TcQ1mlTMr4Z.jpg" alt="">
+        </div>
+        <h3 class="font-bold mt-3">Kurtis</h3>
+        <p class="text-sm text-gray-600 mt-2">Stylish & comfortable kurtis</p>
+      </div>
+      <div class="glass-card p-4 border border-gradient">
+        <div class="w-full h-48 bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg mb-3 flex items-center justify-center">
+          <img src="/leggings.png" alt="leggings">
+        </div>
+        <h3 class="font-bold mt-3">Leggings</h3>
+        <p class="text-sm text-gray-600 mt-2">Premium quality leggings</p>
+      </div>
+      <div class="glass-card p-4 border border-gradient">
+        <div class="w-full h-48 bg-gradient-to-br from-green-100 to-teal-100 rounded-lg mb-3 flex items-center justify-center">
+          <img src="/360_F_1507476741_lRUsqeaK5kynsvnKY8M8zWpshnOqaAvc.jpg" alt="chutidar sets">
+        </div>
+        <h3 class="font-bold mt-3">Churidar Sets</h3>
+        <p class="text-sm text-gray-600 mt-2">Beautiful churidar collections</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-20 px-6 bg-gradient-to-b from-white to-green-50 text-center" data-animate>
+    <h2 class="text-3xl font-semibold mb-8 theme-color">What Our Clients Say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="glass-card p-6 shadow-pop">
+        <div class="text-yellow-500 text-2xl mb-3">★★★★★</div>
+        <p class="text-gray-700 italic mb-4">"Thulir Creations made our baby shower magical! The attention to detail was incredible."</p>
+        <p class="font-bold theme-color">- Priya R.</p>
+      </div>
+      <div class="glass-card p-6 shadow-pop">
+        <div class="text-yellow-500 text-2xl mb-3">★★★★★</div>
+        <p class="text-gray-700 italic mb-4">"Best event planners in Madurai! They understood our vision perfectly and delivered beyond expectations."</p>
+        <p class="font-bold theme-color">- Arun K.</p>
+      </div>
+      <div class="glass-card p-6 shadow-pop">
+        <div class="text-yellow-500 text-2xl mb-3">★★★★★</div>
+        <p class="text-gray-700 italic mb-4">"Professional, creative, and reliable. Made our daughter's birthday unforgettable!"</p>
+        <p class="font-bold theme-color">- Lakshmi S.</p>
+      </div>
     </div>
   </section>
 
@@ -229,11 +285,41 @@
   <!-- Contact Section -->
   <section id="contact" class="py-20 text-center bg-gradient-to-t from-green-100 to-white" data-animate>
     <h2 class="text-3xl font-semibold mb-6 theme-color">Contact Us</h2>
-    <p class="text-gray-700"><i class="fa fa-phone-alt theme-color mr-2"></i><strong>9543476310</strong></p>
-    <p class="text-gray-700 mt-2 max-w-2xl mx-auto"><i class="fa fa-map-marker-alt theme-color mr-2"></i>
-      Meenambigai Nagar 5th Street, Near Ramana Shree Garden, Vasantha Villa Apartment, B4 block, Madurai 625 011, TN
-    </p>
-    <a href="https://wa.me/919543476310" class="inline-block mt-6 bg-green-700 text-white px-8 py-3 rounded-full hover:bg-green-800 transition">Chat on WhatsApp</a>
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Contact Info -->
+        <div class="glass-card p-8 text-left">
+          <h3 class="text-xl font-bold mb-4 theme-color">Get in Touch</h3>
+          <p class="text-gray-700 mb-3"><i class="fa fa-phone-alt theme-color mr-2"></i><strong>9543476310</strong></p>
+          <p class="text-gray-700 mb-3"><i class="fa fa-map-marker-alt theme-color mr-2"></i>
+            Meenabigai Nagar 5th Street, Near Ramana Shree Garden, Vasantha Villa Apartment, B4 block, Madurai 625 011, TN
+          </p>
+          <a href="https://wa.me/919543476310" class="inline-block mt-4 bg-green-700 text-white px-6 py-3 rounded-full hover:bg-green-800 transition">
+            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+        </div>
+
+        <!-- Quick Contact Form -->
+        <div class="glass-card p-8 text-left">
+          <h3 class="text-xl font-bold mb-4 theme-color">Quick Inquiry</h3>
+          <form id="contactForm" class="space-y-4">
+            <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-700" required>
+            <input type="tel" id="phone" placeholder="Phone Number" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-700" required>
+            <select id="eventType" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-700" required>
+              <option value="">Select Event Type</option>
+              <option>Baby Shower</option>
+              <option>Birthday Party</option>
+              <option>Wedding</option>
+              <option>Corporate Event</option>
+              <option>Other</option>
+            </select>
+            <textarea id="message" placeholder="Your Message" rows="3" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-700"></textarea>
+            <textarea id="address" placeholder="Your Address" rows="3" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-green-700"></textarea>
+            <button type="submit" class="w-full bg-green-700 text-white px-6 py-3 rounded-full hover:bg-green-800 transition">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -243,7 +329,7 @@
   </footer>
 
   <!-- Floating WhatsApp button -->
-  <a href="https://wa.me/919543476310" class="float-btn flex items-center justify-center">
+  <a href="https://wa.me/919543476310" class="float-btn flex items-center justify-center" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -262,6 +348,11 @@
     const menu = document.getElementById("mobile-menu");
     menuBtn.addEventListener("click", () => { menu.classList.toggle("hidden"); });
 
+    // Close mobile menu when link clicked
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.add('hidden'));
+    });
+
     // On-scroll animation trigger
     const elements = document.querySelectorAll("[data-animate]");
     const observer = new IntersectionObserver(entries => {
@@ -270,7 +361,26 @@
       });
     }, { threshold: 0.2 });
     elements.forEach(el => observer.observe(el));
+
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const eventType = document.getElementById('eventType').value;
+      const message = document.getElementById('message').value;
+      const address = document.getElementById('address').value;
+      
+      // Create WhatsApp message
+      const whatsappMessage = `Hello! I'm ${name}%0A%0APhone: ${phone}%0AEvent Type: ${eventType}%0AMessage: ${message}%0AAddress: ${address}`;
+      
+      // Redirect to WhatsApp
+      window.open(`https://wa.me/919543476310?text=${whatsappMessage}`, '_blank');
+      
+      // Reset form
+      this.reset();
+    });
   </script>
 
 </body>
-    </html>
+          </html>
